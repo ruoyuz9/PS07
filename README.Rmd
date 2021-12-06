@@ -1,0 +1,73 @@
+---
+title: "Ruoyu Zhang's PS07"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(leaflet)
+library(sf)
+library(maps)
+
+# USA specific data
+library(USAboundaries)
+library(tidycensus)
+library(tmaptools)
+```
+
+## GitHub Documents
+
+This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
+
+## Introduction
+
+
+I am Ruoyu (she/her), an undergrad studying 
+*psychology & study of women and gender (swg)*
+at Smith College. 
+I am taking 
+**Intro to statistics and data science** this semester. 
+I use:    
+*R   
+*Python   
+Below is an example of my coursework.
+
+
+## Plots
+
+
+```{r pressure, echo=FALSE}
+
+USA_map <-  maps::map("state", plot = FALSE, fill = TRUE)
+
+
+# Convert maps package map object to sf object using st_as_sf() again:
+USA_sf <- USA_map %>% 
+  st_as_sf(crs = 4326)
+
+
+trip <- tibble(
+  name = c("UCSD", "Disneyland Park", "Universal Studios Hollywood"), 
+  lat = c(32.8752631656,  33.812511, 34.141354), 
+  lon = c(-117.236132389, -117.918976, -118.352898)
+)
+
+trip_sf <- trip %>%
+  st_as_sf(coords = c("lon", "lat"), crs = 4326)
+
+
+USA_map <-  maps::map("state", plot = FALSE, fill = TRUE)
+
+USA_sf <- USA_map %>% 
+  st_as_sf(crs = 4326)
+
+CA_sf <- USA_sf %>%
+  filter(ID == 'california')
+
+ggplot() + geom_sf(data = CA_sf) +
+  geom_sf(data = trip_sf,aes(col = name), size = 2) +labs(title = 'Trip coordinates in winter recess' )
+  
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
