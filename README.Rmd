@@ -37,7 +37,7 @@ Below is an example of my coursework.
 ## Plots
 
 
-```{r pressure, echo=FALSE}
+```{r trip, echo=FALSE}
 
 USA_map <-  maps::map("state", plot = FALSE, fill = TRUE)
 
