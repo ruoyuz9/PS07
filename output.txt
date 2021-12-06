@@ -1,0 +1,5 @@
+# Introduction
+i'm Ruoyu (she/her), an undergrad studying 
+**psychology & study of women and gender (swg) ** at smith college. 
+I am taking Intro to statistics and data science this semester. 
+I use R and python. Below is an example of my coursework.
